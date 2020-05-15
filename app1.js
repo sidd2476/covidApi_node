@@ -52,9 +52,11 @@ app.post("/",function(req,res){
         })
         response.on("end",function(data){
             var body = Buffer.concat(datas);
+            var n = body.length;
             //console.log(body.toString());
-            res.write(body);
-            res.send()
+            var n1 = body.slice(n-76,n-70).toString();
+            res.render("index",{n1:n1});
+            res.send();
         })
         response.on("error",function(error){
             console.error(error);
